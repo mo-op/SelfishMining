@@ -34,15 +34,13 @@
     .main {
       margin-left: 160px; /* Same as the width of the sidebar */
       padding: 0px 10px;
-      align-items: center;
     }
 
     .results{
       padding: 40px,40px;
     }
-
-    
-       .formContent {
+ 
+    .formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: #fff;
@@ -72,7 +70,7 @@
       text-align: center;
       -webkit-border-radius: 0 0 10px 10px;
       border-radius: 0 0 10px 10px;
-      font-size: 20;
+      font-size: 11;
     }
 
     /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
@@ -111,9 +109,20 @@
                 </div>
              </fieldset>
           </form>
-          <div class="formFooter">
+          <div class="formFooter" style="color:red">
+              {% if error_val %}
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+              {{ error_val }}
+              </div>
+              {% endif %}
               {% if results %}
-                {{results}}
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                Blocks earned by selfish miner: {{num_selfish}} <br>
+                New value for difficulty: {{new_difficulty}} <br>
+                Number of orphaned blocks: {{num_orphaned}}<br>
+                Theoretical profitability for given alpha: {{theoretical}} <br>
+                Simulated profitability for given num of iterations: {{simulated}} <br>
+              </div>
               {% endif %}
           </div>
        </div>
